@@ -123,8 +123,8 @@
     &copy; 2025 Mask Radius Analyzer • Engineering Edition
   </footer>
 
-  <!-- Hidden elements for Selenium to scrape -->
-  <div id="width" style="display:none;"></div>
+  <!-- Hidden elements for Selenium to read width & height -->
+  <div id="width"  style="display:none;"></div>
   <div id="height" style="display:none;"></div>
 
   <script>
@@ -200,6 +200,10 @@
         const widthMm = (widthPx * pxToMm).toFixed(1);
         const heightMm = (heightPx * pxToMm).toFixed(1);
 
+        // Populate hidden divs so Selenium can read them:
+        document.getElementById("width").textContent  = widthMm + " mm";
+        document.getElementById("height").textContent = heightMm + " mm";
+
         // Draw bounding box on the mask (in orange)
         ctx.strokeStyle = '#f59e0b';
         ctx.lineWidth = 2;
@@ -210,10 +214,6 @@
         ctx.font = '16px Arial';
         const dimText = `W: ${widthMm} mm, H: ${heightMm} mm`;
         ctx.fillText(dimText, minX + 5, minY + 20);
-
-        // Populate hidden divs so Selenium can read them:
-        document.getElementById("width").textContent  = widthMm + " mm";
-        document.getElementById("height").textContent = heightMm + " mm";
 
         // Compute centroid
         const sum = mask.reduce((a, p) => ({ x: a.x + p.x, y: a.y + p.y }), { x: 0, y: 0 });
