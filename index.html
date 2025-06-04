@@ -269,7 +269,7 @@
         lengthsPx.forEach((px, i) => {
           const mm = (px * pxToMm).toFixed(1);
           const li = document.createElement('li');
-          li.textContent = `#${i+1}: ${px.toFixed(2)} px (${mm} mm)`;
+          li.textContent = `#${i+1}:(${mm} mm)`;
           listEl.appendChild(li);
         });
 
