@@ -242,7 +242,7 @@
         });
 
         // Radial Sampling
-        const slices = 72, angleStep = 2 * Math.PI / slices;
+        const slices = 1000, angleStep = 2 * Math.PI / slices;
         const lengthsPx = Array(slices).fill(0);
         for (let i = 0; i < slices; i++){
           const θ = i * angleStep, c = Math.cos(θ), s = Math.sin(θ);
